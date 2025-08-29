@@ -1,14 +1,17 @@
-//import { useState } from "react"
+import { useState } from "react"
 import TextInput from "../components/TextInput";
 import Header from "../components/Header"
+import Spinner from "../components/Spinner"
+
 export default function HomePage() {
-    //const [loading, setLoading] = useState("");
-    //const [result, setResult] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [result, setResult] = useState("");
+
     return (
         <div className="min-h-screen w-full bg-gray-50 dark:bg-gray-900">
             <Header />
             <div className="w-full max-w-3xl mx-auto px-4 sm:px-6 md:px-8 py-6 text-center">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-3">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold dark:text-white mb-3">
                     AI Plagiarism Checker
                 </h1>
                 <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300">
@@ -18,10 +21,38 @@ export default function HomePage() {
                 </p>
             </div>
             <div className="flex justify-center items-start pt-8 px-4 sm:px-6 md:px-8">
-                <div className="w-full sm:w-4/5 md:w-3/5 lg:w-2/5">
-                    <TextInput />
+                <div className="w-full sm:w-4/5 md:w-3/4">
+                    <TextInput loading={loading} setLoading={setLoading} setResult={setResult} />
+                    {loading && <Spinner />}    
                 </div>
             </div>
+             {!loading && result && (
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 md:px-8 py-8">
+                <h2 className="text-xl font-bold dark:text-white">
+                    {result.headline}
+                </h2>
+                <h1 className="text-lg dark:text-gray-300 mb-4">
+                    {result.percentageAi}% probability of being Ai-generated
+                </h1>
+
+                <div className="text-left">
+                    {result.sentences.map((sentence, idx) => (
+                    <span
+                        key={idx}
+                        className={`dark:text-white ${
+                            sentence.prob > 0.7
+                                ? "bg-green-200 dark:bg-red-700"
+                                : sentence.prob > 0.4
+                                ? "bg-yellow-200 dark:bg-yellow-700"
+                                : "bg-red-200 dark:bg-green-700"
+                        }`}
+                    >
+                        {sentence.text + " "}
+                    </span>
+                    ))}
+                </div>
+            </div>
+        )}
         </div>
         
     )
