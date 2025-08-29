@@ -27,7 +27,6 @@ function TextInput( {loading, setLoading, setResult}) {
                 headline = "Your document is likely written by a human.";
             }
 
-
             const sentencesArray = text.split(/(?<=[.!?])\s+/).filter(Boolean);
             const numAiSentences = Math.round((percentageAi / 100) * sentencesArray.length);
             const shuffled = [...sentencesArray].sort(() => Math.random() - 0.5);
