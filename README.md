@@ -6,9 +6,10 @@ OriginChecker is the frontend for an application that checks if text is AI-gener
  - Analysis Button: Mocks API request by randomizing AI-likelihood scores, and simulates network delay
  - Loading state: includes a spinner that is shown while the mocked API request is occuring
  - Results: displays a headline, percentage, and highlighted text based on AI probability
-   - Highlighted Red: Text is over 70% likely AI
-   - Highlighted Yellow: Text is over 40% likely AI
-   - Highlighted Green: Text is most likely human
+   - Highlighted
+     - Red: Text is over 70% likely AI
+     - Yellow: Text is over 40% likely AI
+     - Green: Text is most likely human
  - Responsiveness: App works well on different devices like mobile, tablet, desktop
  - Dark Mode support: App adapts the user's OS theme
 
