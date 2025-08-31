@@ -50,7 +50,7 @@ function HomePageContent() {
                     {result.percentageAi}% probability of being AI-generated
                 </h1>
 
-                <div className="text-left">
+                <div className="text-left break-words">
                     {result.sentences.map((sentence, idx) => (
                     <span
                         key={idx}
