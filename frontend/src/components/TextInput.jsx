@@ -29,8 +29,6 @@ function TextInput() {
                 <AnalyzeTextButton/>
             </div>
         </>
-                
-
     )
 }
 
