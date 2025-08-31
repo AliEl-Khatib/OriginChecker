@@ -1,32 +1,39 @@
-function AnalyzeTextButton({ text, setLoading, setResult, loading }) {
-  const handleAnalyze = () => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
+import { useContext } from "react";
+import HomeAnalysisContext from "../contexts/HomeAnalysisProvider";
 
-      const percentageAi = Math.floor(Math.random() * 101);
-      let headline = "";
+function AnalyzeTextButton() {
+    const { text, setLoading, setResult, loading } = useContext(HomeAnalysisContext);
 
-      if (percentageAi > 70) headline = "Your document is most likely AI-generated.";
-      else if (percentageAi > 40) headline = "Your document may contain some AI-generated content.";
-      else headline = "Your document is likely written by a human.";
+    const handleAnalyze = () => {
+        setLoading(true);
+        setTimeout(() => {
+            setLoading(false);
 
-      const sentencesArray = text.split(/(?<=[.!?])\s+/).filter(Boolean);
-      const numAiSentences = Math.round((percentageAi / 100) * sentencesArray.length);
-      const shuffled = [...sentencesArray].sort(() => Math.random() - 0.5);
+            const percentageAi = Math.floor(Math.random() * 101);
+            let headline = "";
 
-      const resultSentences = sentencesArray.map((sentence) => {
-        const isAi = shuffled.indexOf(sentence) < numAiSentences;
-        const prob = isAi ? Math.random() * 0.4 + 0.2 : Math.random() * 0.3 + 0.7;
-        return { text: sentence, prob };
-      });
+            if (percentageAi > 70) headline = "Your document is most likely AI-generated.";
+            else if (percentageAi > 40) headline = "Your document may contain some AI-generated content.";
+            else headline = "Your document is likely written by a human.";
 
-      setResult({
-        headline,
-        percentageAi,
-        sentences: resultSentences,
-      });
+            const sentencesArray = text.split(/(?<=[.!?])\s+/).filter(Boolean);
+            const numAiSentences = Math.round((percentageAi / 100) * sentencesArray.length);
+            const shuffled = [...sentencesArray].sort(() => Math.random() - 0.5);
+
+            const resultSentences = sentencesArray.map((sentence) => {
+                const isAi = shuffled.indexOf(sentence) < numAiSentences;
+                const prob = isAi ? Math.random() * 0.4 + 0.2 : Math.random() * 0.3 + 0.7;
+                return { text: sentence, prob };
+            });
+            
+
+            setResult({
+                headline,
+                percentageAi,
+                sentences: resultSentences,
+        });
     }, 3000);
+    
   };
 
   return (

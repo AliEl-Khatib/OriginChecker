@@ -1,9 +1,9 @@
-import { useState } from "react";
 import AnalyzeTextButton from "./AnalyzeText";
 import TextFileUpload from "./TextFileUpload";
-
-function TextInput( {loading, setLoading, setResult}) {
-    const [text, setText] = useState("");
+import { useContext } from "react";
+import HomeAnalysisContext from "../contexts/HomeAnalysisProvider";
+function TextInput() {
+    const { text, setText, loading } = useContext(HomeAnalysisContext);
 
     const handleInput = (e) => {
         setText(e.target.value);
@@ -25,8 +25,8 @@ function TextInput( {loading, setLoading, setResult}) {
                 />  
             </div>
             <div className="flex justify-end space-x-10 rtl:space-x-reverse sm:pe-4 px-6 py-2">
-                <TextFileUpload setText={setText}/>
-                <AnalyzeTextButton text={text} setLoading={setLoading} setResult={setResult} loading={loading}></AnalyzeTextButton>
+                <TextFileUpload/>
+                <AnalyzeTextButton/>
             </div>
         </>
                 

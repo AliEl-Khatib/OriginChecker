@@ -1,5 +1,9 @@
-function TextFileUpload({ setText }) {
-  const handleFileUpload = (e) => {
+import { useContext } from "react";
+import HomeAnalysisContext from "../contexts/HomeAnalysisProvider";
+function TextFileUpload() {
+    const { setText } = useContext(HomeAnalysisContext);
+
+    const handleFileUpload = (e) => {
         const file = e.target.files[0];
         const reader = new FileReader();
         reader.onload = function(event) {
