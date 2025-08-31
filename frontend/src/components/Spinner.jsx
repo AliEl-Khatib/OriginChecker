@@ -1,3 +1,4 @@
+//Spinner to indicate loading
 function Spinner() {
   return (
     <div role="status" className="flex justify-center items-center">

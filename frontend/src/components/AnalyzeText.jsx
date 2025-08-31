@@ -4,11 +4,13 @@ import HomeAnalysisContext from "../contexts/HomeAnalysisProvider";
 function AnalyzeTextButton() {
     const { text, setLoading, setResult, loading } = useContext(HomeAnalysisContext);
 
+    // Mock Api call too simulate network delay
     const handleAnalyze = () => {
         setLoading(true);
         setTimeout(() => {
             setLoading(false);
 
+            //Randomize probability since this is mocked
             const percentageAi = Math.floor(Math.random() * 101);
             let headline = "";
 
@@ -16,6 +18,7 @@ function AnalyzeTextButton() {
             else if (percentageAi > 40) headline = "Your document may contain some AI-generated content.";
             else headline = "Your document is likely written by a human.";
 
+            //Randomize which sentences are highlighted since this is mocked
             const sentencesArray = text.split(/(?<=[.!?])\s+/).filter(Boolean);
             const numAiSentences = Math.round((percentageAi / 100) * sentencesArray.length);
             const shuffled = [...sentencesArray].sort(() => Math.random() - 0.5);
@@ -26,7 +29,7 @@ function AnalyzeTextButton() {
                 return { text: sentence, prob };
             });
             
-
+            //Return json result
             setResult({
                 headline,
                 percentageAi,

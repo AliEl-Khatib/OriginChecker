@@ -1,3 +1,4 @@
+//Simple header to have title of the website
 const Header = () => {
   return (
     <header className="bg-white dark:bg-gray-800 border-b border-gray-900/10">

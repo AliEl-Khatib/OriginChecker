@@ -3,6 +3,7 @@ import HomeAnalysisContext from "../contexts/HomeAnalysisProvider";
 function TextFileUpload() {
     const { setText } = useContext(HomeAnalysisContext);
 
+    //Updates text when file is uploaded
     const handleFileUpload = (e) => {
         const file = e.target.files[0];
         const reader = new FileReader();
@@ -22,6 +23,7 @@ function TextFileUpload() {
         htmlFor="uploadFile1"
         className="flex hover:bg-gray-400 text-black dark:text-white text-base font-medium px-4 py-2.5 outline-none rounded w-max cursor-pointer"
     > 
+        {/* Upload icon svg */}
         <svg 
             xmlns="http://www.w3.org/2000/svg" 
             className="w-6 mr-2 fill-black dark:fill-white inline" 
@@ -37,6 +39,8 @@ function TextFileUpload() {
             />
         </svg>
         Upload
+
+        {/* Only allow .txt files to be uploaded */}
         <input 
             type="file"
             id='uploadFile1' 

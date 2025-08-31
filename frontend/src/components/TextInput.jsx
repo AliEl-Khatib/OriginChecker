@@ -2,6 +2,7 @@ import AnalyzeTextButton from "./AnalyzeText";
 import TextFileUpload from "./TextFileUpload";
 import { useContext } from "react";
 import HomeAnalysisContext from "../contexts/HomeAnalysisProvider";
+
 function TextInput() {
     const { text, setText, loading } = useContext(HomeAnalysisContext);
 

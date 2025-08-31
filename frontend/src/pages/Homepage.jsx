@@ -18,6 +18,7 @@ function HomePageContent() {
     return (
         <div className="min-h-screen w-full bg-gray-50 dark:bg-gray-900">
             <Header />
+            {/* Title and summary explaining the tool*/ }
             <div className="w-full max-w-3xl mx-auto px-4 sm:px-6 md:px-8 py-4 text-center">
                 <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold dark:text-white mb-3">
                     AI Plagiarism Checker
@@ -30,6 +31,8 @@ function HomePageContent() {
                     Sections in <span className="text-green-600 dark:text-green-400">green</span> are most likely human-written.
                 </p>
             </div>
+            
+            {/* Area for text input and analysis */ }
             <div className="flex justify-center items-start pt-4 px-4 sm:px-6 md:px-8">
                 <div className="w-full sm:w-4/5 md:w-3/4">
                     <div className="w-full max-w-5xl mx-auto mb-4 border-4 border-[#9BAEC4]/10 rounded-lg bg-[#9BAEC4] dark:bg-gray-700 dark:border-gray-600">
@@ -41,6 +44,7 @@ function HomePageContent() {
                 </div>
             </div>
 
+            {/* Show result after it is done updating */ }
             {!loading && result && (
             <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 py-8">
                 <h2 className="text-xl font-bold dark:text-white">
