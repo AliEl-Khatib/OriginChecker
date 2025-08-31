@@ -2,6 +2,7 @@ import { useState } from "react"
 import TextInput from "../components/TextInput";
 import Header from "../components/Header"
 import Spinner from "../components/Spinner"
+import AnalyzeTextButton from "../components/AnalyzeText";
 
 export default function HomePage() {
     const [loading, setLoading] = useState(false);
@@ -22,17 +23,22 @@ export default function HomePage() {
             </div>
             <div className="flex justify-center items-start pt-8 px-4 sm:px-6 md:px-8">
                 <div className="w-full sm:w-4/5 md:w-3/4">
-                    <TextInput loading={loading} setLoading={setLoading} setResult={setResult} />
+                    <div className="w-full max-w-5xl mx-auto mb-4 border-4 border-[#9BAEC4]/10 rounded-lg bg-[#9BAEC4] dark:bg-gray-700 dark:border-gray-600">
+                        <form>
+                            <TextInput loading={loading} setLoading={setLoading} setResult={setResult} />
+                        </form>
+                    </div>
+                    
                     {loading && <Spinner />}    
                 </div>
             </div>
              {!loading && result && (
-            <div className="max-w-3xl mx-auto px-4 sm:px-6 md:px-8 py-8">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 py-8">
                 <h2 className="text-xl font-bold dark:text-white">
                     {result.headline}
                 </h2>
                 <h1 className="text-lg dark:text-gray-300 mb-4">
-                    {result.percentageAi}% probability of being Ai-generated
+                    {result.percentageAi}% probability of being AI-generated
                 </h1>
 
                 <div className="text-left">
