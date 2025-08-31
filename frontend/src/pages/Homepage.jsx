@@ -58,11 +58,11 @@ function HomePageContent() {
                     <span
                         key={idx}
                         className={`dark:text-white ${
-                            sentence.prob > 0.7
-                                ? "bg-green-200 dark:bg-red-700"
-                                : sentence.prob > 0.4
-                                ? "bg-yellow-200 dark:bg-yellow-700"
-                                : "bg-red-200 dark:bg-green-700"
+                        sentence.prob > 0.7
+                            ? "bg-green-200 dark:bg-green-700"
+                            : sentence.prob > 0.4
+                            ? "bg-yellow-200 dark:bg-yellow-700"
+                            : "bg-red-200 dark:bg-red-700"
                         }`}
                     >
                         {sentence.text + " "}
