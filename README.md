@@ -28,3 +28,11 @@ npm install
 npm run dev
 ```
 The app will then be running locally on a localhost address given by Vite
+
+## Tech Stack
+
+Framework: React
+
+Build Tool: Vite
+
+Styling: Tailwind CSS
