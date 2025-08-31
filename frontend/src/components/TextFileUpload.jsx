@@ -18,8 +18,10 @@ function TextFileUpload() {
     }
 
   return (
-    <label htmlFor="uploadFile1"
-        className="flex hover:bg-gray-400 text-black dark:text-white text-base font-medium px-4 py-2.5 outline-none rounded w-max cursor-pointer"> 
+    <label 
+        htmlFor="uploadFile1"
+        className="flex hover:bg-gray-400 text-black dark:text-white text-base font-medium px-4 py-2.5 outline-none rounded w-max cursor-pointer"
+    > 
         <svg 
             xmlns="http://www.w3.org/2000/svg" 
             className="w-6 mr-2 fill-black dark:fill-white inline" 
@@ -41,7 +43,7 @@ function TextFileUpload() {
             className="hidden" 
             accept=".txt"
             onChange={handleFileUpload}
-            />
+        />
     </label>
   );
 }

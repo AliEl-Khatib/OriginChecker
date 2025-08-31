@@ -37,10 +37,10 @@ function HomePageContent() {
                             <TextInput/>
                         </form>
                     </div>
-
                     {loading && <Spinner />}    
                 </div>
             </div>
+
             {!loading && result && (
             <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 py-8">
                 <h2 className="text-xl font-bold dark:text-white">
@@ -49,7 +49,6 @@ function HomePageContent() {
                 <h1 className="text-lg dark:text-gray-300 mb-4">
                     {result.percentageAi}% probability of being AI-generated
                 </h1>
-
                 <div className="text-left break-words">
                     {result.sentences.map((sentence, idx) => (
                     <span
