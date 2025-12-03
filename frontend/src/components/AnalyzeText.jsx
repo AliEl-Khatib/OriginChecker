@@ -2,41 +2,25 @@ import { useContext } from "react";
 import HomeAnalysisContext from "../contexts/HomeAnalysisProvider";
 
 function AnalyzeTextButton() {
-    const { text, setLoading, setResult, loading } = useContext(HomeAnalysisContext);
+  const { text, setLoading, setResult, loading } = useContext(HomeAnalysisContext);
 
-    // Mock Api call too simulate network delay
-    const handleAnalyze = () => {
-        setLoading(true);
-        setTimeout(() => {
-            setLoading(false);
+  const API_URL = import.meta.env.VITE_API_URL;
 
-            //Randomize probability since this is mocked
-            const percentageAi = Math.floor(Math.random() * 101);
-            let headline = "";
-
-            if (percentageAi > 70) headline = "Your document is most likely AI-generated.";
-            else if (percentageAi > 40) headline = "Your document may contain some AI-generated content.";
-            else headline = "Your document is likely written by a human.";
-
-            //Randomize which sentences are highlighted since this is mocked
-            const sentencesArray = text.split(/(?<=[.!?])\s+/).filter(Boolean);
-            const numAiSentences = Math.round((percentageAi / 100) * sentencesArray.length);
-            const shuffled = [...sentencesArray].sort(() => Math.random() - 0.5);
-
-            const resultSentences = sentencesArray.map((sentence) => {
-                const isAi = shuffled.indexOf(sentence) < numAiSentences;
-                const prob = isAi ? Math.random() * 0.4 + 0.2 : Math.random() * 0.3 + 0.7;
-                return { text: sentence, prob };
-            });
-            
-            //Return json result
-            setResult({
-                headline,
-                percentageAi,
-                sentences: resultSentences,
-        });
-    }, 3000);
-    
+  const handleAnalyze = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch(`${API_URL}/api/analyze`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text })
+      });
+      const data = await response.json();
+      setResult(data);
+    } catch (error) {
+      console.error('Error:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
